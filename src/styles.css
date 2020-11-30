@@ -1,0 +1,87 @@
+.main-card-title {
+  display: block;
+  margin: 0 auto;
+  padding-top: 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+.ordinal {
+  vertical-align: super;
+  font-size: 10px;
+}
+
+.city {
+  text-align: center;
+}
+.today {
+  display: block;
+  margin: 0 auto;
+  max-height: 400px;
+  position: relative;
+  left: 20px;
+}
+
+.day_time {
+  text-align: center;
+}
+
+div {
+  text-align: center;
+}
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5px 80px;
+}
+
+h1 {
+  color: #405781;
+}
+
+.range {
+  color: #405781;
+  font-size: 15px;
+  line-height: 10px;
+}
+
+.forecast {
+  display: block;
+  margin: 0 auto;
+  float: left;
+  max-width: 90%;
+  height: 100px;
+}
+
+.card-title {
+  font-size: 18px;
+}
+
+.extras-align {
+  display: inline-block;
+  text-align: center;
+}
+
+.extras {
+  text-align: left;
+  line-height: 12px;
+  font-size: 15px;
+}
+
+.description {
+  color: #405781;
+  font-size: 25px;
+  line-height: 21px;
+}
+
+.feeling {
+  font-size: 15px;
+  color: #405781;
+}
+
+.min {
+  color: blue;
+}
+.max {
+  color: red;
+}
