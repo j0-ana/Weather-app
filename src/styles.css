@@ -85,3 +85,18 @@ h1 {
 .max {
   color: red;
 }
+
+#Celsius {
+  border-radius: 10px;
+}
+
+#Fahrenheit {
+  border-radius: 10px;
+}
+
+#gitHub-link {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
