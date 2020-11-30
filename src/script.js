@@ -96,4 +96,3 @@ function retrievePosition() {
 
 let locationButton = document.querySelector("#my-location");
 locationButton.addEventListener("click", retrievePosition);
-
