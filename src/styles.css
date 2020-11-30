@@ -86,17 +86,36 @@ h1 {
   color: red;
 }
 
-#Celsius {
-  border-radius: 10px;
-}
-
+#Celsius,
 #Fahrenheit {
   border-radius: 10px;
 }
 
-#gitHub-link {
+#gitHubButton {
   display: block;
   margin: 0 auto;
   padding: 5px 10px;
   border-radius: 10px;
+  border: 3px solid #405781;
+  text-decoration: none;
+  background: #e76432;
+  color: white;
+  box-shadow: rgb(64, 87, 129, 0.5) 0px 8px 8px 0;
+  cursor: pointer;
+}
+
+#gitHubButton:hover {
+  background: white;
+  color: #e76432;
+}
+
+#gitHub-link {
+  color: #e4c42d;
+  text-decoration: none;
+  -webkit-text-stroke: 1px #e4c42d;
+}
+
+#myself {
+  text-decoration: none;
+  color: #e76432;
 }
