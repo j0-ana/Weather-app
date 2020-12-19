@@ -120,3 +120,8 @@ h1 {
   text-decoration: none;
   color: #e76432;
 }
+
+.active {
+  color: #405781;
+  font-weight: bolder;
+}
