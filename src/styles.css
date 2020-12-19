@@ -14,10 +14,11 @@
 .city {
   text-align: center;
 }
-.today {
+
+.icon-today {
   display: block;
   margin: 0 auto;
-  max-height: 400px;
+  height: 400px;
   position: relative;
   left: 20px;
 }

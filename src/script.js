@@ -51,7 +51,7 @@ today.innerHTML = nowFull;
 ////
 
 function showWeather(response){
-  console.log(response.data)
+  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#currentTemp").innerHTML = `${Math.round(response.data.main.temp)}°C`;
   document.querySelector("#humidity").innerHTML = `&#128167; &nbsp ${response.data.main.humidity}%`;
@@ -59,7 +59,10 @@ function showWeather(response){
   document.querySelector("#max-now").innerHTML = `Max: ${Math.round(response.data.main.temp_max)}°C `;
   document.querySelector("#min-now").innerHTML = `| Min: ${Math.round(response.data.main.temp_min)}°C`;
   document.querySelector("#windSpeed").innerHTML = `&#127788; &nbsp ${Math.round(response.data.wind.speed)} km/h`;
-  document.querySelector("#description").innerHTML = response.data.weather[0].main};
+  document.querySelector("#description").innerHTML = response.data.weather[0].main;
+  document.querySelector("#icon-today").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+document.querySelector("#icon-today").setAttribute("alt", response.data.weather[0].description);
+}
 
   function search(city){
     let apiKey = "ca7e82d0d5801d59d5748f1ff62a2dcb";
