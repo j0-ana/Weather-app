@@ -63,6 +63,9 @@ function showWeather(response){
   document.querySelector("#icon-today").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   document.querySelector("#icon-today").setAttribute("alt", response.data.weather[0].description);
   celsiusTemperature = response.data.main.temp;
+  celsiusMinTemp = Math.round(response.data.main.temp_min);
+  celsiusMaxTemp = Math.round(response.data.main.temp_max);
+  realFeelTemp = Math.round(response.data.main.feels_like);
 }
 
   function search(city){
@@ -101,10 +104,19 @@ function retrievePosition() {
 function showFahrenheitTemperature(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#currentTemp");
+  let minTempElement = document.querySelector("#min-now");
+  let maxTempElement = document.querySelector("#max-now");
+  let realFeel = document.querySelector("#feeling");
   celsius.classList.remove("active");
   fahrenheit.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature*9)/5+32;
+  let minFahrenheitTemp = (celsiusMinTemp*9)/5+32;
+  let maxFahrenheitTemp = (celsiusMaxTemp*9)/5+32;
+  let realFeelTempF = (realFeelTemp*9)/5+32;
   temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}&deg;F`;
+  minTempElement.innerHTML = ` Min: ${Math.round(minFahrenheitTemp)}&deg;F`;
+  maxTempElement.innerHTML = `Max: ${Math.round(maxFahrenheitTemp)}&deg;F |`;
+  realFeel.innerHTML = `Feels like ${Math.round(realFeelTempF)}&deg;F`;
 }
 
 function showCelsiusTemperature(event){
@@ -112,11 +124,26 @@ function showCelsiusTemperature(event){
   celsius.classList.add("active");
   fahrenheit.classList.remove("active");
   let temperatureElementC = document.querySelector("#currentTemp");
+  let minTempElementC = document.querySelector("#min-now");
+  let maxTempElement = document.querySelector("#max-now");
+  let realFeelC = document.querySelector("#feeling");
   let celsiusTemp = celsiusTemperature;
+  let minTempC = celsiusMinTemp;
+  let maxTempC = celsiusMaxTemp;
+  let realFeelTempC = realFeelTemp;
   temperatureElementC.innerHTML = `${Math.round(celsiusTemp)}&deg;C`;
+  minTempElementC.innerHTML = ` Min: ${Math.round(minTempC)}&deg;C`;
+  maxTempElement.innerHTML = `Max: ${Math.round(maxTempC)}&deg;C |`;
+  realFeelC.innerHTML = `Feels like ${Math.round(realFeelTempC)}&deg;C`;
 }
 
 let celsiusTemperature = null;
+
+let celsiusMinTemp = null;
+
+let celsiusMaxTemp = null;
+
+let realFeelTemp = null;
 
 let locationButton = document.querySelector("#my-location");
 locationButton.addEventListener("click", retrievePosition);
