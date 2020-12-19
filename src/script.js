@@ -68,12 +68,29 @@ function showWeather(response){
   realFeelTemp = Math.round(response.data.main.feels_like);
 }
 
+function displayForecast(response){
+console.log(response.date);
+let forecastElement = document.querySelector("forecast");
+forecastElement.innerHTML = `
+   <div class="col - 2">
+        <div class="card">
+            <img src="src/images/cloudy 2.jpg" class="forecast" alt="cloudy">
+                <div class="card-body">
+                    <h5 class="card-title">12:00</h5>
+                          <p class="card-text">Max: <span class="max">17&deg;C</span> <br/> Min: <span class="min">9&deg;C</span></p>
+    </div>
+    `
+}
+
   function search(city){
     let apiKey = "ca7e82d0d5801d59d5748f1ff62a2dcb";
     let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather?q=";
     let unit = "metric";
     let apiUrl = `${apiEndpoint}${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(showWeather);
+
+    apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(displayForecast);
   }
 
 function handleSubmit(event) {
