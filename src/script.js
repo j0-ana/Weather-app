@@ -66,70 +66,22 @@ function showWeather(response){
 }
 
 function displayForecast(response){
-let forecast = response.data.list[0];
-console.log(forecast);
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML=null;
+  let forecast = null;
 
-let forecastElement = document.querySelector("#forecast");
-
-forecastElement.innerHTML = `
-  <div class="col-2">
+for (let index = 0; index < 6 ; index++){
+    forecast = response.data.list[index];
+    forecastElement.innerHTML +=`
+      <div class="col-2">
       <h5>${formatHours(forecast.dt*1000)}</h5>
       <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
       <p>
       Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
       Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
       </div>
-`;
-forecast = response.data.list[1];
-forecastElement.innerHTML += `
-<div class="col-2">
-      <h5>${formatHours(forecast.dt*1000)}</h5>
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
-      <p>
-      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
-      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
-      </div>
-`
-forecast = response.data.list[2];
-forecastElement.innerHTML += `
-<div class="col-2">
-      <h5>${formatHours(forecast.dt*1000)}</h5>
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
-      <p>
-      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
-      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
-      </div>
-`
-forecast = response.data.list[3];
-forecastElement.innerHTML += `
-<div class="col-2">
-      <h5>${formatHours(forecast.dt*1000)}</h5>
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
-      <p>
-      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
-      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
-      </div>
-`
-forecast = response.data.list[4];
-forecastElement.innerHTML += `
-<div class="col-2">
-      <h5>${formatHours(forecast.dt*1000)}</h5>
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
-      <p>
-      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
-      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
-      </div>
-`
-forecast = response.data.list[5];
-forecastElement.innerHTML += `
-<div class="col-2">
-      <h5>${formatHours(forecast.dt*1000)}</h5>
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
-      <p>
-      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
-      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
-      </div>
-`
+      `;
+  }
 }
 
   function search(city){

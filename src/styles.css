@@ -54,7 +54,8 @@ h1 {
 }
 
 h5 {
-  font-size: 18px;
+  all: none;
+  font-size: smaller;
 }
 
 .extras-align {
