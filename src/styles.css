@@ -46,15 +46,14 @@ h1 {
   line-height: 10px;
 }
 
-.forecast {
+.weather-image {
   display: block;
   margin: 0 auto;
-  float: left;
   max-width: 90%;
   height: 100px;
 }
 
-.card-title {
+h5 {
   font-size: 18px;
 }
 
@@ -114,6 +113,10 @@ h1 {
   color: #e4c42d;
   text-decoration: none;
   -webkit-text-stroke: 1px #e4c42d;
+}
+
+#joana {
+  text-align: center;
 }
 
 #myself {

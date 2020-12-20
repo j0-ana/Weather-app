@@ -1,20 +1,9 @@
-let now = new Date();
+function formatDate(timestamp){
+  let date = new Date(timestamp);
+  let yearNow = date.getFullYear();
+  let dayNumber = new Date().getDate();
 
-let yearNow = now.getFullYear();
-
-let dayNumber = new Date().getDate();
-
-let hourNow = new Date().getHours();
-if (hourNow < 10) {
-  hourNow = "0" + hourNow;
-}
-
-let minutesNow = new Date().getMinutes();
-if (minutesNow < 10) {
-  minutesNow = "0" + minutesNow;
-}
-
-let days = [
+  let days = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -22,33 +11,40 @@ let days = [
   "Thursday",
   "Friday",
   "Saturday",
-];
+  ];
+  let day = days[date.getDay()];
 
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
+  let months = [
+   "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let monthNow = months[date.getMonth()];
 
-let monthNow = months[now.getMonth()];
+  return `${day}, ${dayNumber} ${monthNow} ${yearNow}, ${formatHours(timestamp)}`;
+}
 
-let dayNow = days[now.getDay()];
-
-let nowFull = `${dayNow}, ${dayNumber} ${monthNow} ${yearNow}, ${hourNow}h${minutesNow}`;
-
-let today = document.querySelector("#dateNow");
-today.innerHTML = nowFull;
-
-////
+function formatHours(timestamp){
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+    if (hours < 10){
+    hours = `0${hours}`;
+  }
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${hours}h${minutes}`;
+}
 
 function showWeather(response){
   console.log(response.data);
@@ -60,8 +56,9 @@ function showWeather(response){
   document.querySelector("#min-now").innerHTML = `| Min: ${Math.round(response.data.main.temp_min)}°C`;
   document.querySelector("#windSpeed").innerHTML = `&#127788; &nbsp ${Math.round(response.data.wind.speed)} km/h`;
   document.querySelector("#description").innerHTML = response.data.weather[0].main;
+  document.querySelector("#currentDate").innerHTML = formatDate(response.data.dt * 1000);
   document.querySelector("#icon-today").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-  document.querySelector("#icon-today").setAttribute("alt", response.data.weather[0].description);
+  document.querySelector("#icon-today").setAttribute("alt", response.data.weather[0].description);  
   celsiusTemperature = response.data.main.temp;
   celsiusMinTemp = Math.round(response.data.main.temp_min);
   celsiusMaxTemp = Math.round(response.data.main.temp_max);
@@ -69,17 +66,70 @@ function showWeather(response){
 }
 
 function displayForecast(response){
-console.log(response.date);
-let forecastElement = document.querySelector("forecast");
+let forecast = response.data.list[0];
+console.log(forecast);
+
+let forecastElement = document.querySelector("#forecast");
+
 forecastElement.innerHTML = `
-   <div class="col - 2">
-        <div class="card">
-            <img src="src/images/cloudy 2.jpg" class="forecast" alt="cloudy">
-                <div class="card-body">
-                    <h5 class="card-title">12:00</h5>
-                          <p class="card-text">Max: <span class="max">17&deg;C</span> <br/> Min: <span class="min">9&deg;C</span></p>
-    </div>
-    `
+  <div class="col-2">
+      <h5>${formatHours(forecast.dt*1000)}</h5>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <p>
+      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
+      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
+      </div>
+`;
+forecast = response.data.list[1];
+forecastElement.innerHTML += `
+<div class="col-2">
+      <h5>${formatHours(forecast.dt*1000)}</h5>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <p>
+      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
+      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
+      </div>
+`
+forecast = response.data.list[2];
+forecastElement.innerHTML += `
+<div class="col-2">
+      <h5>${formatHours(forecast.dt*1000)}</h5>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <p>
+      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
+      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
+      </div>
+`
+forecast = response.data.list[3];
+forecastElement.innerHTML += `
+<div class="col-2">
+      <h5>${formatHours(forecast.dt*1000)}</h5>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <p>
+      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
+      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
+      </div>
+`
+forecast = response.data.list[4];
+forecastElement.innerHTML += `
+<div class="col-2">
+      <h5>${formatHours(forecast.dt*1000)}</h5>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <p>
+      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
+      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
+      </div>
+`
+forecast = response.data.list[5];
+forecastElement.innerHTML += `
+<div class="col-2">
+      <h5>${formatHours(forecast.dt*1000)}</h5>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <p>
+      Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
+      Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
+      </div>
+`
 }
 
   function search(city){
@@ -161,6 +211,7 @@ let celsiusMinTemp = null;
 let celsiusMaxTemp = null;
 
 let realFeelTemp = null;
+
 
 let locationButton = document.querySelector("#my-location");
 locationButton.addEventListener("click", retrievePosition);
