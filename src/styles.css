@@ -1,29 +1,24 @@
 .card.mb-3 {
-  background: rgb(2, 0, 36);
+  background: rgb(123, 116, 237);
   background: linear-gradient(
     142deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(0, 52, 255, 1) 30%,
-    rgba(0, 212, 255, 1) 70%
-  );
-}
-
-.card-header {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    142deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(0, 52, 255, 1) 67%,
+    rgba(123, 116, 237, 1) 0%,
+    rgba(255, 149, 0, 1) 50%,
     rgba(0, 212, 255, 1) 100%
   );
 }
 
-.main-card-title {
-  display: block;
-  margin: 0 auto;
-  padding-top: 0;
-  text-align: center;
-  font-size: 30px;
+.card-header {
+  background: rgb(123, 116, 237);
+  background: linear-gradient(
+    142deg,
+    rgba(123, 116, 237, 1) 44%,
+    rgba(255, 149, 0, 1) 94%
+  );
+}
+
+#humidity-wind {
+  font-size: 25px;
 }
 
 .ordinal {
@@ -31,8 +26,9 @@
   font-size: 10px;
 }
 
-.city {
+#city {
   text-align: center;
+  color: black;
 }
 
 #icon-today {
@@ -44,8 +40,10 @@
   height: 200px;
 }
 
-.day_time {
+#currentDate,
+#description {
   text-align: center;
+  color: black;
 }
 
 div {
@@ -98,6 +96,12 @@ h1 {
 
 #Celsius,
 #Fahrenheit {
+  border-radius: 10px;
+}
+
+#search-city-input,
+#search,
+#my-location {
   border-radius: 10px;
 }
 

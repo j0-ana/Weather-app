@@ -50,11 +50,11 @@ function showWeather(response){
   console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#currentTemp").innerHTML = `${Math.round(response.data.main.temp)}°C`;
-  document.querySelector("#humidity").innerHTML = `&#128167; &nbsp ${response.data.main.humidity}%`;
-  document.querySelector("#feeling").innerHTML = `Feels like ${Math.round(response.data.main.feels_like)}°C`;
-  document.querySelector("#max-now").innerHTML = `Max: ${Math.round(response.data.main.temp_max)}°C `;
-  document.querySelector("#min-now").innerHTML = `| Min: ${Math.round(response.data.main.temp_min)}°C`;
-  document.querySelector("#windSpeed").innerHTML = `&#127788; &nbsp ${Math.round(response.data.wind.speed)} km/h`;
+  document.querySelector("#humidity").innerHTML = `<span id="humidity-wind">&#128167;</span> &nbsp ${response.data.main.humidity}%`;
+  document.querySelector("#feeling").innerHTML = `<strong>Feels like ${Math.round(response.data.main.feels_like)}°C<strong/>`;
+  document.querySelector("#max-now").innerHTML = `Max: <span class="max"> ${Math.round(response.data.main.temp_max)}°C `;
+  document.querySelector("#min-now").innerHTML = `| Min: <span class="min">${Math.round(response.data.main.temp_min)}°C`;
+  document.querySelector("#windSpeed").innerHTML = `<span id="humidity-wind">&#127788;</span> &nbsp ${Math.round(response.data.wind.speed)} km/h`;
   document.querySelector("#description").innerHTML = response.data.weather[0].main;
   document.querySelector("#currentDate").innerHTML = formatDate(response.data.dt * 1000);
   document.querySelector("#icon-today").setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
