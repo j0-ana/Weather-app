@@ -1,3 +1,23 @@
+.card.mb-3 {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    142deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 52, 255, 1) 30%,
+    rgba(0, 212, 255, 1) 70%
+  );
+}
+
+.card-header {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    142deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 52, 255, 1) 67%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+
 .main-card-title {
   display: block;
   margin: 0 auto;
@@ -15,12 +35,13 @@
   text-align: center;
 }
 
-.icon-today {
+#icon-today {
   display: block;
   margin: 0 auto;
-  height: 400px;
   position: relative;
-  left: 20px;
+  top: 150px;
+  left: 50px;
+  height: 200px;
 }
 
 .day_time {
@@ -37,25 +58,13 @@ div {
 }
 
 h1 {
-  color: #405781;
+  color: black;
 }
 
 .range {
-  color: #405781;
+  color: black;
   font-size: 15px;
   line-height: 10px;
-}
-
-.weather-image {
-  display: block;
-  margin: 0 auto;
-  max-width: 90%;
-  height: 100px;
-}
-
-h5 {
-  all: none;
-  font-size: smaller;
 }
 
 .extras-align {
@@ -70,14 +79,14 @@ h5 {
 }
 
 .description {
-  color: #405781;
+  color: black;
   font-size: 25px;
   line-height: 21px;
 }
 
 .feeling {
   font-size: 15px;
-  color: #405781;
+  color: black;
 }
 
 .min {
@@ -126,6 +135,6 @@ h5 {
 }
 
 .active {
-  color: #405781;
+  color: #e76432;
   font-weight: bolder;
 }
