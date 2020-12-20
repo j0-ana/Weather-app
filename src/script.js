@@ -57,7 +57,7 @@ function showWeather(response){
   document.querySelector("#windSpeed").innerHTML = `&#127788; &nbsp ${Math.round(response.data.wind.speed)} km/h`;
   document.querySelector("#description").innerHTML = response.data.weather[0].main;
   document.querySelector("#currentDate").innerHTML = formatDate(response.data.dt * 1000);
-  document.querySelector("#icon-today").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#icon-today").setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   document.querySelector("#icon-today").setAttribute("alt", response.data.weather[0].description);  
   celsiusTemperature = response.data.main.temp;
   celsiusMinTemp = Math.round(response.data.main.temp_min);
@@ -75,7 +75,7 @@ for (let index = 0; index < 6 ; index++){
     forecastElement.innerHTML +=`
       <div class="col-2">
       <p>${formatHours(forecast.dt*1000)}</p>
-      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
+      <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png">
       <p>
       Max: <span class="max">${Math.round(forecast.main.temp_max)}&deg;C</span> <br/>
       Min: <span class="min">${Math.round(forecast.main.temp_min)}&deg;C</span></p>
@@ -91,7 +91,7 @@ for (let index = 0; index < 6 ; index++){
     let apiUrl = `${apiEndpoint}${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(showWeather);
 
-    apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
+    apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
     axios.get(apiUrl).then(displayForecast);
   }
 
@@ -111,7 +111,7 @@ function showPosition(position) {
   let longitude = position.coords.longitude;
   let apiKey = "ca7e82d0d5801d59d5748f1ff62a2dcb";
   let unit = "metric";
-  let apiEndpoint = "http://api.openweathermap.org/data/2.5/weather"
+  let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather"
   let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showWeather);
 }
