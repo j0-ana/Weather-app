@@ -70,7 +70,7 @@ function displayForecast(response){
   forecastElement.innerHTML=null;
   let forecast = null;
 
-for (let index = 0; index < 6 ; index++){
+  for (let index = 0; index < 6 ; index++){
     forecast = response.data.list[index];
     forecastElement.innerHTML +=`
       <div class="col-2">
@@ -114,6 +114,9 @@ function showPosition(position) {
   let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather"
   let apiUrl = `${apiEndpoint}?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function retrievePosition() {
